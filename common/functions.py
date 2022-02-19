@@ -42,3 +42,6 @@ def load_data_to_bigquery(credentials, project_id, table_id, uri, file_type):
     destination_table = client.get_table(table_id)
     print("Loaded {} rows.".format(destination_table.num_rows))
 
+
+
+
