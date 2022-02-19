@@ -19,13 +19,8 @@ from airflow import DAG
 from airflow.operators.python import PythonOperator, BranchPythonOperator
 from airflow.operators.bash import BashOperator
 from datetime import datetime
-
 from common.functions import *
 from pipeline.init_params import *
-from airflow import DAG
-from airflow.operators.python import PythonOperator, BranchPythonOperator
-from airflow.operators.bash import BashOperator
-from datetime import datetime
 
 
 daily_dags = {
