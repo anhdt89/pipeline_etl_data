@@ -5,6 +5,9 @@ Created on Sat Feb 19 14:49:21 2022
 @author: Admin
 """
 
+# path server
+project_path = '/root/airflow/dags'
+
 # data local
 path = 'C:/Users/Admin/Downloads/Test GCP/'
 file_name = 'Daily quality report of 4G VTC network on 01162022 PV.xlsx'
@@ -29,4 +32,5 @@ uri_file_name = 'gs://anhdt2110/KPItest/test.csv'
 # bigquery
 table_id = '{project_id}.{dataset}.{table_name}'
 # table_id.format(project_id = gcs_project_id, dataset = dataset, table_name = 'test_auto')
+
 

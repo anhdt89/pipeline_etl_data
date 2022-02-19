@@ -4,7 +4,8 @@ Created on Sat Feb 19 13:27:52 2022
 
 @author: Admin
 """
-
+import sys, os, io
+sys.path.append(os.getenv('/root/airflow/dags/'))
 from packages.import_packages import *
 
 # source
