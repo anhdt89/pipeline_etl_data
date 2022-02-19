@@ -49,12 +49,13 @@ def load_data_to_bigquery(credentials, project_id, table_id, uri, file_type):
 project_path = '/root/airflow/dags'
 
 # data local
-path = 'C:/Users/Admin/Downloads/Test GCP/'
+path = '/root/airflow/dags/pipeline_etl_data/'
 file_name = 'Daily quality report of 4G VTC network on 01162022 PV.xlsx'
 sheet_name = '8 day Peak Overview'
 
 # service account, project id
-gcs_path_service_account = 'D:/project/pipeline_etl_data/service_account_key.json'
+# gcs_path_service_account = 'D:/project/pipeline_etl_data/service_account_key.json'
+gcs_path_service_account = '/root/airflow/dags/pipeline_etl_data/service_account_key.json'
 gcs_project_id = 'fifth-sunup-338412'
 dataset = 'dataset_test'
 
