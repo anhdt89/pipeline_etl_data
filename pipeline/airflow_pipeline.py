@@ -11,7 +11,15 @@ from dotenv import load_dotenv
 load_dotenv(sys.path.append(os.getenv('/root/airflow/dags/pipeline_etl_data/')))
 sys.path.append(os.getenv('/root/airflow/dags/pipeline_etl_data/'))
 
-from packages.import_packages import *
+# from packages.import_packages import *
+import pandas as pd
+from google.cloud import bigquery, storage
+from google.oauth2 import service_account
+from airflow import DAG
+from airflow.operators.python import PythonOperator, BranchPythonOperator
+from airflow.operators.bash import BashOperator
+from datetime import datetime
+
 from common.functions import *
 from pipeline.init_params import *
 from airflow import DAG
