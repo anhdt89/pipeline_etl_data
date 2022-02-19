@@ -9,7 +9,14 @@ import sys, os, io
 from dotenv import load_dotenv
 load_dotenv(sys.path.append(os.getenv('/root/airflow/dags/')))
 sys.path.append(os.getenv('/root/airflow/dags/'))
-from packages.import_packages import *
+# from packages.import_packages import *
+import pandas as pd
+from google.cloud import bigquery, storage
+from google.oauth2 import service_account
+from airflow import DAG
+from airflow.operators.python import PythonOperator, BranchPythonOperator
+from airflow.operators.bash import BashOperator
+from datetime import datetime
 
 # source
 def read_file_excel(path, file_name, sheet_name):
