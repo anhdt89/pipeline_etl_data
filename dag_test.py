@@ -84,7 +84,7 @@ daily_dags = {
     # 'on_failure_callback': on_failure_callback,
 }
 
-dag = DAG(dag_id="pipeline_import_auto", default_args=daily_dags,)
+dag = DAG(dag_id="pipeline_import_auto_1", default_args=daily_dags,)
 start_job = BashOperator(task_id='start_job', bash_command='echo "starting job"', dag=dag)
 end_job = BashOperator(task_id='end_job', bash_command='echo "ending job"', dag=dag)
 load_data_to_bigquery = PythonOperator(task_id ='load_data_to_bigquery',
