@@ -7,8 +7,8 @@ Created on Sat Feb 19 14:56:32 2022
 
 
 import sys, os, io
-# from dotenv import load_dotenv
-# load_dotenv(sys.path.append(os.getenv('GCS_PROJECT_PATH')))
+from dotenv import load_dotenv
+load_dotenv(sys.path.append(os.getenv('/root/airflow/dags/pipeline_etl_data/')))
 sys.path.append(os.getenv('/root/airflow/dags/pipeline_etl_data/'))
 
 from packages.import_packages import *

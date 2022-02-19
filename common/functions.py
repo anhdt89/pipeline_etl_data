@@ -4,7 +4,10 @@ Created on Sat Feb 19 13:27:52 2022
 
 @author: Admin
 """
+
 import sys, os, io
+from dotenv import load_dotenv
+load_dotenv(sys.path.append(os.getenv('/root/airflow/dags/pipeline_etl_data/')))
 sys.path.append(os.getenv('/root/airflow/dags/pipeline_etl_data/'))
 from packages.import_packages import *
 
