@@ -10,7 +10,6 @@ import sys, os, io
 from dotenv import load_dotenv
 load_dotenv(sys.path.append(os.getenv('/root/airflow/dags/')))
 sys.path.append(os.getenv('/root/airflow/dags/'))
-
 # from packages.import_packages import *
 import pandas as pd
 from google.cloud import bigquery, storage
@@ -25,8 +24,8 @@ from pipeline.init_params import *
 
 daily_dags = {
     'owner': 'longnv42',
-    'retries': 1,
-    'retry_delay': datetime.timedelta(minutes=1),
+    # 'retries': 1,
+    # 'retry_delay': datetime.timedelta(minutes=1),
     'start_date': airflow.utils.dates.days_ago(1),
     'schedule_interval': '@once',
     # 'on_failure_callback': on_failure_callback,

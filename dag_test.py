@@ -43,6 +43,14 @@ def load_data_to_bigquery(credentials, project_id, table_id, uri, file_type):
     load_job.result()
     destination_table = client.get_table(table_id)
     print("Loaded {} rows.".format(destination_table.num_rows))
+    
+def call_procedure_test(credentials, project_id, procedure_name):
+    credentials = service_account.Credentials.from_service_account_file(credentials)
+    client = bigquery.Client(credentials=credentials, project=project_id)
+    job = client.query(procedure_name)
+    
+    
+
 
 
 # path server
@@ -84,6 +92,7 @@ daily_dags = {
     # 'on_failure_callback': on_failure_callback,
 }
 
+
 dag = DAG(dag_id="pipeline_import_auto_1", default_args=daily_dags,)
 start_job = BashOperator(task_id='start_job', bash_command='echo "starting job"', dag=dag)
 end_job = BashOperator(task_id='end_job', bash_command='echo "ending job"', dag=dag)
@@ -98,5 +107,16 @@ load_data_to_bigquery = PythonOperator(task_id ='load_data_to_bigquery',
                                             },
                                        dag=dag,
                                        )
-start_job >> load_data_to_bigquery >> end_job
+
+call_procedure_test = PythonOperator(task_id='call_procedure_test',
+                                     python_callable = call_procedure_test,
+                                     op_kwargs={
+                                          "credentials": gcs_path_service_account,
+                                          "project_id": gcs_project_id,
+                                          "procedure_name": '''call {procedure_name}('{p_zone}', '{p_time}')'''.format(procedure_name = 'fifth-sunup-338412.dataset_test.insert_data_from_manual_to_auto', p_zone='KAN', p_time='2022-01-14'),
+                                          },
+                                     dag=dag,
+                                     )
+
+start_job >> load_data_to_bigquery >> call_procedure_test >> end_job
 
