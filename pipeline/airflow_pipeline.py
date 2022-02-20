@@ -8,8 +8,8 @@ Created on Sat Feb 19 14:56:32 2022
 
 import sys, os, io
 from dotenv import load_dotenv
-load_dotenv(sys.path.append(os.getenv('/root/airflow/dags/')))
-sys.path.append(os.getenv('/root/airflow/dags/'))
+# load_dotenv(sys.path.append(os.getenv('/root/airflow/dags/')))
+# sys.path.append(os.getenv('/root/airflow/dags/'))
 # from packages.import_packages import *
 import pandas as pd
 from google.cloud import bigquery, storage
